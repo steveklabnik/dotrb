@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Browsers: Om nom nom</title>
+
+		<meta name="description" content="A talk about the future of computing">
+		<meta name="author" content="Steve Klabnik">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Web Browsers:<br />Om nom nom</h1>
+					<p>
+          By <a href="http://steveklabnik.com">Steve Klabnik</a>
+					</p>
+				</section>
+
+        <!-- We have failed -->
+        <section>
+          <section>
+            <h2>We have failed<br />non-programmers</h2>
+          </section>
+          <section>
+            <h3>"The thing I think historians will miss is that a web browser represents the first time we can download arbitrary<br/>executable code and not worry about fucking things up." - @tomdale</h3>
+          </section>
+          <section data-background="http://doodleen.files.wordpress.com/2012/07/doodle_en.png" data-background-size="1000px">
+          </section>
+          <section data-background="http://upload.wikimedia.org/wikipedia/commons/4/42/Firefox_22_no_Windows_8.1.png" data-background-size="1000px">
+          </section>
+          <section data-background="http://computersandcomposition.candcblog.org/archives/v10/10_2_html/10_2_8_Boudreau1.gif" data-background-size="1000px">
+          </section>
+          <section data-background="http://www.adjigol.com/Software/Pics/MSWORD/6.0.1-mac.png" data-background-size="1000px">
+          </section>
+          <section data-background="http://codinghorror.typepad.com/.a/6a0120a85dcdae970b0120a86d6311970b-pi" data-background-size="1000px">
+          </section>
+          <section data-background="http://upload.wikimedia.org/wikipedia/commons/4/42/Firefox_22_no_Windows_8.1.png" data-background-size="1000px">
+          </section>
+        </section>
+
+        <!-- Standards Today -->
+        <section>
+          <section>
+            <h2>Web Standards Now</h2>
+          </section>
+          <section>
+            <h2>How it "works"</h2>
+            
+<ul>
+    <li>Browser vendor proposes feature.</li>
+    <li>W3C specification.</li>
+    <li>Other browser vendors implement the feature.</li>
+    <li>Someone implements a JS wrapper on top of feature.</li>
+</ul>
+
+          </section>
+          <section>
+          <h2>Cons</h2>
+           
+<ul>
+    <li>Vendors don't build sites.</li>
+    <li>Takes <strong>forever</strong>.</li>
+    <li>No web dev feedback.</li>
+    <li>Spotty support.</li>
+</ul>
+          </section>
+        </section>
+
+        <!-- Standards in the future -->
+        <section>
+          <section>
+            <h2>Web Standards Tomorrow?</h2>
+          </section>
+          <section>
+            <h2>How it should work</h2>
+            
+<ul>
+    <li>Build new features in JS.</li>
+    <li>W3C specification.</li>
+    <li>Implement natively in browsers.</li>
+</ul>
+
+          </section>
+          <section>
+          <h2>Pros</h2>
+           
+<ul>
+    <li>Devs do build sites.</li>
+    <li>Speed not limited by vendors.</li>
+    <li>Polyfill on day one.</li>
+</ul>
+          </section>
+          <section>
+          <h2>Cons</h2>
+          <p>Browsers aren't extensible.</p> 
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Extending Browsers</h2>
+          </section>
+          <section>
+            <h2>Example: CSP</h2>
+<pre><code>Content-Security-Policy: default-src 'self' ajax.googleapis.com</code></pre>
+          </section>
+          <section>
+            <h2>CSP in JS</h2>
+<pre><code>var origin = window.location.origin;
+ 
+page.addEventListener('fetch', function(e) {
+  var url = e.request.url;
+  if (origin !== url.origin) {
+    // block the network request
+    e.preventDefault();
+  }
+ 
+  // otherwise, allow the network request through
+});</code></pre>
+          </section>
+          <section>
+            <h2>jQuery polyfill</h2>
+          </section>
+          <section>
+            <h2>"Apps"</h2>
+            <p>Bookmarking a site == installing an 'app'</p>
+          </section>
+        </section>
+
+        <section>
+          <h2>So... Rails?</h2>
+          <ul>
+              <li>Basically APIs only.</li>
+              <li>Use Rails-API.</li>
+              <li>Use JSON-API.</li>
+              <li>Use Ember.</li>
+              <li>Admit reality.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Web Browsers: Om nom nom</h2>
+          <p>&lt;3 - @steveklabnik</p>
+          <p><a href="http://extensiblewebmanifesto.org">http://extensiblewebmanifesto.org</a></p>
+        </section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
